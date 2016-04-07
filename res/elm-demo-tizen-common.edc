@@ -16,7 +16,6 @@
  */
 
 collections {
-   base_scale: 2.6;
    #include "../edc_resource/layout.edc"
    #include "../edc_resource/datetime.edc"
    #include "../edc_resource/entry.edc"
