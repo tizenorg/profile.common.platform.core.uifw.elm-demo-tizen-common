@@ -16,6 +16,7 @@
  */
 
 #include "main.h"
+#include <app_control.h>
 
 static void
 list_selected_cb(void *data, Evas_Object *obj, void *event_info)
@@ -27,6 +28,22 @@ list_selected_cb(void *data, Evas_Object *obj, void *event_info)
 void
 accessibility_cb(void *data, Evas_Object *obj, void *event_info)
 {
+			app_control_h service;
+			int launch_ret;
+
+			if (!app_control_create(&service)) {
+				//app_control_set_operation(service, APP_CONTROL_OPERATION_DEFAULT);
+				app_control_set_operation(service, APP_CONTROL_OPERATION_PICK);
+				app_control_set_app_id(service, "ug-bluetooth-efl");
+
+				app_control_add_extra_data(service, "launch-type", "setting");
+
+				launch_ret = app_control_send_launch_request(service, NULL, NULL);
+
+				app_control_destroy(service);
+			}
+
+#if 0
 	Evas_Object *list;
 	Evas_Object *nf = data;
 
@@ -39,4 +56,5 @@ accessibility_cb(void *data, Evas_Object *obj, void *event_info)
 	elm_list_go(list);
 
 	elm_naviframe_item_push(nf, "Accessibility", NULL, NULL, list, NULL);
+#endif
 }

@@ -10,6 +10,7 @@ BuildRequires:  pkgconfig(efl-extension)
 BuildRequires:  pkgconfig(capi-appfw-application)
 BuildRequires:  pkgconfig(capi-system-system-settings)
 BuildRequires:  pkgconfig(capi-appfw-app-manager)
+BuildRequires:  pkgconfig(capi-appfw-application)
 BuildRequires:  app-core-efl-devel
 BuildRequires:  efl-extension-devel
 BuildRequires:  cmake
